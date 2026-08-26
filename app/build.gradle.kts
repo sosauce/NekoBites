@@ -9,6 +9,8 @@ android {
         version = release(37)
     }
 
+    publishing { singleVariant("release") }
+
     defaultConfig {
         applicationId = "com.sosauce.nekobites"
         minSdk = 24
@@ -22,7 +24,7 @@ android {
     buildTypes {
         release {
             optimization {
-                enable = false
+                enable = true
             }
         }
     }
