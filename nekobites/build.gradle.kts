@@ -1,12 +1,18 @@
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
+    id("maven-publish")
 }
 
 android {
     namespace = "com.sosauce.nekobites"
     compileSdk {
         version = release(37)
+    }
+
+    publishing {
+        singleVariant("release")
     }
 
     defaultConfig {
@@ -19,11 +25,6 @@ android {
     }
 
 }
-
-// For Jitpack
-group = "com.github.sosauce"
-version = "1.0.0"
-
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
@@ -31,5 +32,17 @@ dependencies {
     implementation(libs.androidx.compose.animation)
     implementation(libs.androidx.compose.animation.graphics.android)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+}
 
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            afterEvaluate {
+                from(components["release"])
+                groupId = "com.github.sosauce"
+                artifactId = "nekobites"
+                version = "1.0.0"
+            }
+        }
+    }
 }
