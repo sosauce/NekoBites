@@ -20,6 +20,10 @@ android {
 
 }
 
+// For Jitpack
+group = "com.github.sosauce"
+version = "1.0.0"
+
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
