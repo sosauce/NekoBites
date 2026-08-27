@@ -20,7 +20,6 @@ import androidx.compose.material3.contentColorFor
 import androidx.compose.material3.toPath
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -141,10 +140,10 @@ fun ToggleAnimatedFab(
 ) {
 
     val checkedProgress by
-        animateFloatAsState(
-            targetValue = if (checked) 1f else 0f,
-            animationSpec = bouncySpec(),
-        )
+    animateFloatAsState(
+        targetValue = if (checked) 1f else 0f,
+        animationSpec = bouncySpec(),
+    )
     val fabAnimation = rememberFabAnimations(checkedProgress > .5f)
 
     Box(

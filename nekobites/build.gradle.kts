@@ -32,6 +32,8 @@ dependencies {
     implementation(libs.androidx.compose.animation)
     implementation(libs.androidx.compose.animation.graphics.android)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.colorpicker.compose)
+
 }
 
 publishing {

@@ -1,12 +1,13 @@
 [versions]
 agp = "9.3.2"
+colorpickerCompose = "1.2.0"
 coreKtx = "1.19.0"
 lifecycleRuntimeKtx = "2.11.0"
 activityCompose = "1.13.0"
 kotlin = "2.4.10"
 composeBom = "2026.08.00"
 appcompat = "1.8.0"
-material3 = "1.5.0-alpha26"
+material3 = "1.5.0-alpha27"
 composeAnimation = "1.12.0"
 
 
@@ -24,6 +25,7 @@ androidx-material3 = { module = "androidx.compose.material3:material3", version.
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-compose-animation = { group = "androidx.compose.animation", name = "animation", version.ref = "composeAnimation" }
 androidx-compose-animation-graphics-android = { module = "androidx.compose.animation:animation-graphics-android", version.ref = "composeAnimation" }
+colorpicker-compose = { module = "com.github.skydoves:colorpicker-compose", version.ref = "colorpickerCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
