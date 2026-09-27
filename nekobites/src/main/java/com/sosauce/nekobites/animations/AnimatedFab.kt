@@ -16,8 +16,10 @@ import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.contentColorFor
 import androidx.compose.material3.toPath
+import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -25,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Matrix
@@ -145,29 +148,34 @@ fun ToggleAnimatedFab(
         animationSpec = bouncySpec(),
     )
     val fabAnimation = rememberFabAnimations(checkedProgress > .5f)
-
-    Box(
-        modifier = modifier
-            .scale(fabAnimation.scale)
-            .defaultMinSize(minWidth = minSize, minHeight = minSize)
-            .clip(fabAnimation.shape)
-            .background(containerColor)
-            .toggleable(
-                value = checked,
-                onValueChange = onCheckedChange,
-                interactionSource = null,
-                indication = null,
-            )
+    Surface(
+        shadowElevation = 5.dp,
+        shape = fabAnimation.shape
     ) {
-        Icon(
-            painter = painterResource(icon(checkedProgress)),
-            contentDescription = null,
-            tint = contentColorFor(containerColor),
-            modifier = Modifier
-                .align(Alignment.Center)
-                .rotate(fabAnimation.rotation)
-        )
+        Box(
+            modifier = modifier
+                .scale(fabAnimation.scale)
+                .defaultMinSize(minWidth = minSize, minHeight = minSize)
+                .clip(fabAnimation.shape)
+                .background(containerColor)
+                .toggleable(
+                    value = checked,
+                    onValueChange = onCheckedChange,
+                    interactionSource = null,
+                    indication = null,
+                )
+        ) {
+            Icon(
+                painter = painterResource(icon(checkedProgress)),
+                contentDescription = null,
+                tint = contentColorFor(containerColor),
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .rotate(fabAnimation.rotation)
+            )
+        }
     }
+
 }
 
 

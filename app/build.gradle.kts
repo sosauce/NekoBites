@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sosauce.nekobites"
+    namespace = "com.sosauce.nekobites.app"
     compileSdk {
         version = release(37)
     }
@@ -12,7 +12,7 @@ android {
     publishing { singleVariant("release") }
 
     defaultConfig {
-        applicationId = "com.sosauce.nekobites"
+        applicationId = "com.sosauce.nekobites.app"
         minSdk = 24
         targetSdk = 37
         versionCode = 1
@@ -46,4 +46,5 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(project(":nekobites"))
 }

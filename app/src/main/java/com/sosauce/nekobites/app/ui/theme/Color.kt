@@ -1,4 +1,4 @@
-package com.sosauce.nekobites.ui.theme
+package com.sosauce.nekobites.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
