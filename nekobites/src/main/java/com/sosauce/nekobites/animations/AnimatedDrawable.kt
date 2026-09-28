@@ -20,6 +20,7 @@ fun AnimatedDrawable(
 
     val resource = when (drawable) {
         AnimatedDrawableFile.MORE_VERT -> R.drawable.animated_morevert
+        AnimatedDrawableFile.MORE_HOR -> R.drawable.animated_more_horiz
         AnimatedDrawableFile.SORT -> R.drawable.animated_sort
         AnimatedDrawableFile.PLAY -> R.drawable.animated_play
     }
