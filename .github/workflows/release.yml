@@ -7,6 +7,10 @@
           description: 'Release Tag & Name (e.g. v1.0.0)'
           required: true
           type: string
+        release_note:
+          description: 'What is new'
+          required: true
+          type: string
 
   jobs:
     build:
@@ -19,14 +23,15 @@
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             
-            git tag "$TAG"
-            git push origin "$TAG"
+            git tag ${{ inputs.tag }}
+            git push origin ${{ inputs.tag }}
 
         - name: Create GitHub Release
           uses: softprops/action-gh-release@v3
           with:
             tag_name: ${{ inputs.tag }}
             name: ${{ inputs.tag }}
+            body: ${{ inputs.release_note }}
             generate_release_notes: true
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
