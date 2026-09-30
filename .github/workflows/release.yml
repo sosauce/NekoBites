@@ -1,4 +1,4 @@
-  name: Build & Release
+  name: Release
 
   on:
     workflow_dispatch:
@@ -13,9 +13,14 @@
           type: string
 
   jobs:
-    build:
+    release:
       runs-on: ubuntu-latest
       steps:
+        - name: Checkout
+          uses: actions/checkout@v7
+          with:
+            fetch-depth: 0
+            
         - name: Create Git tag
           env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
