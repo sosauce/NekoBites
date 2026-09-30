@@ -142,38 +142,32 @@ fun ToggleAnimatedFab(
     icon: (checkedProgress: Float) -> Int
 ) {
 
-    val checkedProgress by
-    animateFloatAsState(
+    val checkedProgress by animateFloatAsState(
         targetValue = if (checked) 1f else 0f,
         animationSpec = bouncySpec(),
     )
     val fabAnimation = rememberFabAnimations(checkedProgress > .5f)
-    Surface(
-        shadowElevation = 5.dp,
-        shape = fabAnimation.shape
-    ) {
-        Box(
-            modifier = modifier
-                .scale(fabAnimation.scale)
-                .defaultMinSize(minWidth = minSize, minHeight = minSize)
-                .clip(fabAnimation.shape)
-                .background(containerColor)
-                .toggleable(
-                    value = checked,
-                    onValueChange = onCheckedChange,
-                    interactionSource = null,
-                    indication = null,
-                )
-        ) {
-            Icon(
-                painter = painterResource(icon(checkedProgress)),
-                contentDescription = null,
-                tint = contentColorFor(containerColor),
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .rotate(fabAnimation.rotation)
+    Box(
+        modifier = modifier
+            .scale(fabAnimation.scale)
+            .defaultMinSize(minWidth = minSize, minHeight = minSize)
+            .clip(fabAnimation.shape)
+            .background(containerColor)
+            .toggleable(
+                value = checked,
+                onValueChange = onCheckedChange,
+                interactionSource = null,
+                indication = null,
             )
-        }
+    ) {
+        Icon(
+            painter = painterResource(icon(checkedProgress)),
+            contentDescription = null,
+            tint = contentColorFor(containerColor),
+            modifier = Modifier
+                .align(Alignment.Center)
+                .rotate(fabAnimation.rotation)
+        )
     }
 
 }

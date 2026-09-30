@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.nativeClipboardManager
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
 import com.github.skydoves.colorpicker.compose.HsvColorPicker
@@ -88,7 +89,7 @@ fun ColorPickerDialog(
             }
 
             fun pasteHaxFromClipboard() {
-                val clip = clipboardManager.nativeClipboard.primaryClip ?: return
+                val clip = clipboardManager.nativeClipboardManager.primaryClip ?: return
                 if (clip.itemCount == 0) return
                 clip.getItemAt(0).coerceToText(context)?.toString()?.let { pasted ->
                     try {
